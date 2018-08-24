@@ -1,0 +1,10 @@
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\obj\Debug\busTimesTag.csprojAssemblyReference.cache
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\obj\Debug\busTimesTag.csproj.CoreCompileInputs.cache
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\bin\Debug\busTimesTag.exe.config
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\bin\Debug\busTimesTag.exe
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\bin\Debug\busTimesTag.pdb
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\obj\Debug\busTimesTag.csproj.CopyComplete
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\obj\Debug\busTimesTag.exe
+C:\Users\Maxime.Roccisano\source\repos\busTimesTag\busTimesTag\obj\Debug\busTimesTag.pdb
