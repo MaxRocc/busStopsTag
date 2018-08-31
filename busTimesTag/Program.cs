@@ -16,7 +16,10 @@ namespace busTimesTag
         static void Main(string[] args)
         {           
             Console.WriteLine("Hello Max");
-            tagAPI.GetData("5.728029", "45.185658", "500");
+            tagAPI api = new tagAPI();
+            List<LinesNearData> result = api.GetData("5.728029", "45.185658", "450");
+            Dictionary<string, List<string>> dicoAAfficher = api.ConvertObjToDico(result);
+            api.DisplayMonDico(dicoAAfficher);            
         }
     }
 }

@@ -9,38 +9,71 @@ using System.Threading.Tasks;
 
 namespace busTimesTag
 {
-    public class tagAPI//https://www.newtonsoft.com/json/help/html/SerializingJSONFragments.htm
+    public class tagAPI
+        //https://www.newtonsoft.com/json/help/html/SerializingJSONFragments.htm
+        //https://www.newtonsoft.com/json/help/html/DeserializeCollection.htm
+
     {
-        public static List<busStop> GetData(string latitude, string longitude, string meters)
+        private IRequestAPI _request;
+
+        public tagAPI()
+        {
+            _request = new RequestAPI();
+        }
+
+        public tagAPI(IRequestAPI request)
+        {
+            _request = request;
+        }
+
+        public List<LinesNearData> GetData(string latitude, string longitude, string meters)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
             // Create a request for the URL. 	
-            string url = "https://data.metromobilite.fr/api/linesNear/json?x=" + latitude + "&y=" + longitude + "&dist=" + meters + "&details=true";
-            Console.WriteLine(url);
-            WebRequest request = WebRequest.Create(url);
-            // If required by the server, set the credentials. Not mandatory
-            //request.Credentials = CredentialCache.DefaultCredentials;//not mandatory
-            // Get the response.
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            // Display the status.
-            Console.WriteLine(response.StatusDescription);
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Display the content.
-            Console.WriteLine(responseFromServer);
-            // Cleanup the streams and the response.
-            reader.Close();
-            dataStream.Close();
-            response.Close();
+            string baseUrl = "https://data.metromobilite.fr/api/linesNear/json?x={0}&y={1}&dist={2}&details=true";
+            string urltest = String.Format(baseUrl, latitude, longitude, meters);
+            //previous line equals to : string url = "https://data.metromobilite.fr/api/linesNear/json?x=" + latitude + "&y=" + longitude + "&dist=" + meters + "&details=true";
 
-            List<busStop> stops = JsonConvert.DeserializeObject<List<busStop>>(responseFromServer);//https://www.newtonsoft.com/json/help/html/DeserializeCollection.htm
+            string responseFromServer = _request.DoRequest(urltest);
+
+            List<LinesNearData> stops = JsonConvert.DeserializeObject<List<LinesNearData>>(responseFromServer);          
+
             return stops;
         }
+        public Dictionary<string, List<string>> ConvertObjToDico(List<LinesNearData> stops) {
+            Dictionary<string, List<string>> monDico = new Dictionary<string, List<string>>();
 
+            //List<string> a = monDico["key"];//demo by Olivier
+            //string c = "lkj54";//demo by Olivier
+            //List<string> b = new List<string> { "mtrhtrzhlh", "ljhbv" };//demo by Olivier
+            //monDico["key"].Add(c);//demo by Olivier
+            //monDico["key"].AddRange(b);//demo by Olivier
+
+            foreach (LinesNearData stop in stops)
+            {
+                if (!monDico.ContainsKey(stop.name))
+                {
+                    monDico.Add(stop.name, stop.lines);
+                }
+                else
+                {
+                    monDico[stop.name].AddRange(stop.lines);
+                }
+                //Console.WriteLine(stop.name);
+            }
+            return monDico;
+        }
+        public void DisplayMonDico(Dictionary<string, List<string>> monDico)
+        {
+            foreach (KeyValuePair<String, List<string>> item in monDico)
+            {
+                Console.WriteLine(item.Key);
+                foreach (var line in item.Value)
+                {
+                Console.WriteLine(line);
+                }
+            }
+        }
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "busTimesTag", "busTimesTag\busTimesTag.csproj", "{0C87626C-6A2B-4840-B17E-65F2A4CAB6E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "busTimesTagTests", "busTimesTagTests\busTimesTagTests.csproj", "{B6324A9B-6121-45CE-88A1-E502C57B1C4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0C87626C-6A2B-4840-B17E-65F2A4CAB6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C87626C-6A2B-4840-B17E-65F2A4CAB6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C87626C-6A2B-4840-B17E-65F2A4CAB6E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6324A9B-6121-45CE-88A1-E502C57B1C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6324A9B-6121-45CE-88A1-E502C57B1C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6324A9B-6121-45CE-88A1-E502C57B1C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6324A9B-6121-45CE-88A1-E502C57B1C4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
